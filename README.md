@@ -35,7 +35,7 @@ This project implements a robust **GPS Tracking System** tailored for the Royal 
 
 The infrastructure consists of several interconnected services running within a Docker network, managed by a reverse proxy gateway.
 
-![Architecture Diagram](images/Architecture-Design.png)
+![Architecture Diagram](Architecture-Design.png)
 
 ### 📸 System Screenshots
 
