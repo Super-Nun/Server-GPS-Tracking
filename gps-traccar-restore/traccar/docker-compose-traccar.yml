@@ -1,0 +1,12 @@
+services:
+  traccar:
+    image: traccar/traccar:latest
+    container_name: traccar-restore
+    restart: on-failure
+    ports:
+      - "8100:8082"
+    volumes:
+      - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
+      - ../logs:/opt/traccar/logs
+    networks:
+      - restore_net

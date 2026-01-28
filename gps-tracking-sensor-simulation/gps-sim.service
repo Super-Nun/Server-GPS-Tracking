@@ -1,0 +1,15 @@
+#Create Service (.service) to run continuously: nano /etc/systemd/system/gps-sim.service
+[Unit]
+Description=GPS Simulation Service (200 Devices)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/sim-gps-sensor
+ExecStart=/usr/bin/python3 /root/sim-gps-sensor/gps-sim.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

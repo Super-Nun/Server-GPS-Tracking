@@ -1,0 +1,18 @@
+services:
+  traccar:
+    image: traccar/traccar:latest
+    container_name: traccar
+    restart: unless-stopped
+    ports:
+      - "5000-5150:5000-5150"       # Port GPS (TCP)
+      - "5000-5150:5000-5150/udp"   # Port GPS (UDP)
+      - "8082:8082"       # Web UI
+    volumes:
+      - ./traccar.xml:/opt/traccar/conf/traccar.xml:ro
+      - ./logs:/opt/traccar/logs
+      - ./web:/opt/traccar/web
+
+    depends_on:
+      - mariadb
+    networks:
+      - proxy_network

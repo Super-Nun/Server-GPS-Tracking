@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  # 1. Database 
+  mariadb:
+    extends:
+      file: ./mariadb/docker-compose-mariadb.yml
+      service: mariadb
+
+  # 2. Traccar 
+  traccar:
+    extends:
+      file: ./traccar/docker-compose-traccar.yml
+      service: traccar
+    depends_on:
+      - mariadb
+    networks:
+      - restore_net
+      - existing_proxy_net
+
+networks:
+  restore_net:
+    driver: bridge
+
+
+  existing_proxy_net:
+    external: true
+    name: gps-traccar_proxy_network

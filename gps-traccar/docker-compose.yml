@@ -1,0 +1,50 @@
+services:
+  # 1. Nginx proxy manager
+  nginx:
+    extends:
+      file: ./nginx/docker-compose.nginx.yml
+      service: nginx
+
+  # 2. Database
+  mariadb:
+    extends:
+      file: ./mariadb/docker-compose.mariadb.yml
+      service: mariadb
+
+  # 3. Traccar
+  traccar:
+    extends:
+      file: ./traccar/docker-compose.traccar.yml
+      service: traccar
+
+  # 4. dbeaver
+  cloudbeaver:
+    extends:
+      file: ./dbeaver/docker-compose.dbeaver.yml
+      service: cloudbeaver
+    volumes:
+      - ./beszelhub/beszel_data:/mnt/beszel_db
+
+# 5. beszelHub
+  beszel:
+    extends:
+      file: ./beszelhub/docker-compose.beszelhub.yml
+      service: beszel
+
+  beszel-agent:
+    extends:
+      file: ./beszelhub/docker-compose.beszelhub.yml
+      service: beszel-agent
+
+# 6. backup
+  db-backup:
+    extends:
+      file: ./mysqlbackups/docker-compose.backup.yml
+      service: db-backup
+
+networks:
+  proxy_network:
+    driver: bridge
+
+volumes:
+  cloudbeaver_workspace:

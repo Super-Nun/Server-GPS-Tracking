@@ -1,0 +1,14 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb-restore
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret_root_password
+      - MYSQL_USER=secret_user
+      - MYSQL_PASSWORD=secret_password
+      - MYSQL_DATABASE=traccar
+    volumes:
+      - ../mysql_restore_data:/var/lib/mysql
+    networks:
+      - restore_net

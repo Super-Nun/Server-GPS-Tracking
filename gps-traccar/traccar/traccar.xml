@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE properties SYSTEM 'http://java.sun.com/dtd/properties.dtd'>
+<properties>
+    <entry key='config.default'>./conf/default.xml</entry>
+
+    <!-- Setting Connection MariaDB -->
+    <entry key='database.driver'>com.mysql.cj.jdbc.Driver</entry>
+    <entry key='database.url'>jdbc:mysql://mariadb:3306/traccar?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true</entry>
+    <entry key='database.user'>secret_user</entry>
+    <entry key='database.password'>secret_password</entry>
+    
+    <!-- Backup 30 days -->
+    <entry key='database.historyDays'>30</entry>
+</properties>

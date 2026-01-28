@@ -1,0 +1,14 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret_root_password # Root Password
+      - MYSQL_USER=secret_user                   # Traccar User
+      - MYSQL_PASSWORD=secret_password           # Traccar Password
+      - MYSQL_DATABASE=traccar
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - proxy_network

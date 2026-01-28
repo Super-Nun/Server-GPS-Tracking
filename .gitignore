@@ -1,0 +1,11 @@
+**/data/
+**/mysql_data/
+**/mysql_restore_data/
+**/mysqlbackups/
+**/logs/
+**/node_modules/
+**/.env
+*.gz
+*.sql
+*.log
+.DS_Store
